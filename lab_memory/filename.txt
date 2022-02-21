@@ -1,0 +1,82 @@
+==152== Memcheck, a memory error detector
+==152== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==152== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==152== Command: ./allocate
+==152== Parent PID: 8
+==152== 
+==152== error calling PR_SET_PTRACER, vgdb might block
+==152== Invalid write of size 8
+==152==    at 0x403A8D: Room::addLetter(Letter const&) (room.cpp:46)
+==152==    by 0x404EA4: Allocator::solve() (allocator.cpp:96)
+==152==    by 0x404DC4: Allocator::allocate() (allocator.cpp:72)
+==152==    by 0x4132E8: main (main.cpp:26)
+==152==  Address 0x4cfa550 is 0 bytes inside a block of size 208 free'd
+==152==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x403A00: Room::clear() (room.cpp:69)
+==152==    by 0x403A2B: Room::~Room() (room.cpp:41)
+==152==    by 0x404C09: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152==  Block was alloc'd at
+==152==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x4881DB7: operator new(unsigned long) (in /usr/lib/llvm-10/lib/libc++abi.so.1.0)
+==152==    by 0x403802: Room::Room(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) (room.cpp:22)
+==152==    by 0x407EC3: fileio::readRoom(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (fileio.cpp:107)
+==152==    by 0x407E22: fileio::nextRoom() (fileio.cpp:99)
+==152==    by 0x404BD9: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152== 
+==152== Invalid read of size 1
+==152==    at 0x403B81: Room::print(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) (room.cpp:61)
+==152==    by 0x404F87: Allocator::printRooms(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) (allocator.cpp:87)
+==152==    by 0x4132FB: main (main.cpp:27)
+==152==  Address 0x4cf9650 is 0 bytes inside a block of size 208 free'd
+==152==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x403A00: Room::clear() (room.cpp:69)
+==152==    by 0x403A2B: Room::~Room() (room.cpp:41)
+==152==    by 0x404C09: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152==  Block was alloc'd at
+==152==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x4881DB7: operator new(unsigned long) (in /usr/lib/llvm-10/lib/libc++abi.so.1.0)
+==152==    by 0x403802: Room::Room(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) (room.cpp:22)
+==152==    by 0x407EC3: fileio::readRoom(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (fileio.cpp:107)
+==152==    by 0x407E22: fileio::nextRoom() (fileio.cpp:99)
+==152==    by 0x404BD9: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152== 
+==152== Invalid free() / delete / delete[] / realloc()
+==152==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x403A00: Room::clear() (room.cpp:69)
+==152==    by 0x403A2B: Room::~Room() (room.cpp:41)
+==152==    by 0x40518A: Allocator::~Allocator() (allocator.cpp:126)
+==152==    by 0x41332E: main (main.cpp:32)
+==152==  Address 0x4cfa550 is 0 bytes inside a block of size 208 free'd
+==152==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x403A00: Room::clear() (room.cpp:69)
+==152==    by 0x403A2B: Room::~Room() (room.cpp:41)
+==152==    by 0x404C09: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152==  Block was alloc'd at
+==152==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==152==    by 0x4881DB7: operator new(unsigned long) (in /usr/lib/llvm-10/lib/libc++abi.so.1.0)
+==152==    by 0x403802: Room::Room(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) (room.cpp:22)
+==152==    by 0x407EC3: fileio::readRoom(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (fileio.cpp:107)
+==152==    by 0x407E22: fileio::nextRoom() (fileio.cpp:99)
+==152==    by 0x404BD9: Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:54)
+==152==    by 0x4048FD: Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (allocator.cpp:18)
+==152==    by 0x4132C8: main (main.cpp:25)
+==152== 
+==152== 
+==152== HEAP SUMMARY:
+==152==     in use at exit: 0 bytes in 0 blocks
+==152==   total heap usage: 649 allocs, 658 frees, 54,112 bytes allocated
+==152== 
+==152== All heap blocks were freed -- no leaks are possible
+==152== 
+==152== For lists of detected and suppressed errors, rerun with: -s
+==152== ERROR SUMMARY: 61 errors from 3 contexts (suppressed: 0 from 0)
